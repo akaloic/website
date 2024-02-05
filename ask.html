@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>A ma grosse patate</title>
+  </head>
+  <body>
+    <div style="width: 480px; position: relative">
+      <!-- <iframe src="https://giphy.com/embed/MFIsOqzodLr7ewnkUb" width="480" height="372" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/myHQ-workspaces-funny-please-MFIsOqzodLr7ewnkUb"></a></p>
+      <iframe src="https://giphy.com/embed/2aw9gwZlltbdX92b4w" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/laff-tv-eyes-puss-in-boots-puppy-dog-2aw9gwZlltbdX92b4w"></a></p> -->
+      <iframe
+        src="https://giphy.com/embed/aZ4sQUpybai5y"
+        width="480"
+        height="260"
+        frameborder="0"
+        class="giphy-embed"
+        allowfullscreen
+        id="GIF"
+      ></iframe>
+
+    <h1 id="changed">Tu veux être ma patate à la Saint-Valentin ??</h1>
+    <button id="oui" onclick="grossirBouton(this)">Of courseee, slayyy</button>
+    <button id="underserved" onclick="grossirBouton(this)">
+      Je ne te mérite pas
+    </button>
+    <button id="non" onclick="grossirBouton(this)">Non, t'es trop moche</button>
+
+    <script>
+      var nombreAppuis = 0;
+      var titre = document.getElementById("changed");
+      
+      var gifChanged = false;
+      var girl = "https://giphy.com/embed/aZ4sQUpybai5y";
+      var cool = "https://giphy.com/embed/kiBcwEXegBTACmVOnE";
+
+      function okButton() {
+        if (nombreAppuis < 5) {
+          if (document.getElementById("underserved") != null) {
+            document.getElementById("underserved").remove();
+          }
+          if (document.getElementById("non") != null) {
+            document.getElementById("non").remove();
+          }
+          if (gifChanged) {
+            var gif = document.getElementById("GIF");
+            gif.src = girl;
+            gifChanged = false;
+          }
+
+          document.getElementById("oui").innerText = "slayyyy bitch";
+          titre.innerText =
+            "Appuies encore " +
+            (5 - nombreAppuis) +
+            " fois sur le bouton 'slayyyy bitch' et promis j'accepte.";
+          nombreAppuis++;
+        } else {
+          window.location.href = "youpi.html";
+        }
+      };
+
+      function collisionAvecAutresElements(top, left, boutonRect) {
+        var tousLesElements = document.querySelectorAll("body *:not(button)");
+
+        for (var i = 0; i < tousLesElements.length; i++) {
+          var elementRect = tousLesElements[i].getBoundingClientRect();
+
+          if (
+            top < elementRect.bottom &&
+            top + boutonRect.height > elementRect.top &&
+            left < elementRect.right &&
+            left + boutonRect.width > elementRect.left
+          ) {
+            return true;
+          }
+        }
+
+        return false;
+      }
+
+      function deplacerAleatoirement(element) {
+          var bodyWidth = document.body.clientWidth - 300;
+          var bodyHeight = document.body.clientHeight - 300;
+
+          var elementWidth = element.offsetWidth;
+          var elementHeight = element.offsetHeight;
+
+          var randomX = Math.floor(Math.random() * (bodyWidth - elementWidth));
+          var randomY = Math.floor(Math.random() * (bodyHeight - elementHeight));
+
+          element.style.position = 'absolute';
+          element.style.left = randomX + 'px';
+          element.style.top =   randomY + 'px';
+      }
+
+
+      function grossirBouton(button) {
+        switch (button.id) {
+          case "oui":
+            okButton();
+            break;
+          case "underserved":
+            titre.innerText =
+              "Je le sais très bien chérie que je suis TROP bien pour toi MAIS tkt, je te laisse une seconde chance.";
+            var bouton = document.getElementById("underserved");
+            bouton.remove();
+
+            if (!gifChanged) {
+              var gif = document.getElementById("GIF");
+              gif.src = cool;
+              gifChanged = true;
+            }
+
+            break;
+          case "non":
+            var ouiButton = document.getElementById("oui");
+
+            var tailleMaximale = window.innerWidth / 15;
+
+            var tailleActuelle = window
+              .getComputedStyle(ouiButton, null)
+              .getPropertyValue("font-size");
+
+            var nouvelleTaille = parseFloat(tailleActuelle) * 1.2;
+
+            if (nouvelleTaille <= tailleMaximale) {
+              ouiButton.style.fontSize = nouvelleTaille + "px";
+            } else {
+              titre.innerText = "Orghhhhhhhhh t'abuses là.............";
+            }
+
+            deplacerAleatoirement(button);
+            break;
+          default:
+            alert("T'es trop mignon(ne) !");
+        }
+      }
+    </script>
+  </body>
+</html>

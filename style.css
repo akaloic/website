@@ -1,0 +1,98 @@
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  margin: 50px;
+  background-color: #C6B2BF;
+}
+
+iframe {
+  border-radius: 50px;
+}
+
+h1 {
+  background-color: #E695CC;
+  border-radius: 50px;
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  margin-top: 50px;
+}
+
+.thank-you-note {
+  border-radius: 50px;
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-out;
+}
+
+.thank-you-note p {
+  line-height: 1.6;
+}
+
+button {
+  display: block;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+#oui {
+  background-color: #3498db;
+}
+
+#underserved {
+  background-color: #e74c3c;
+}
+
+#non {
+  background-color: #f39c12;
+}
+
+/* Ajoute une animation à l'élément déplacé */
+button[style^="position: absolute"] {
+  animation: moveAnimation 0.5s ease-in-out;
+}
+
+@keyframes moveAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
