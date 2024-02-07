@@ -6,6 +6,29 @@
     <title>Thank You</title>
   </head>
   <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        setInterval(createFirework, 50);
+      });
+
+      function createFirework() {
+        const firework = document.createElement("div");
+        firework.classList.add("firework");
+        firework.innerHTML = "&#x2764;";
+
+        const randomX = Math.random() * window.innerWidth;
+        const randomY = Math.random() * window.innerHeight;
+
+        firework.style.left = `${randomX}px`;
+        firework.style.top = `${randomY}px`;
+
+        document.body.appendChild(firework);
+
+        setTimeout(() => {
+          firework.remove();
+        }, 1000);
+      }
+    </script>
     <iframe
       src="https://giphy.com/embed/NSKGI1DNrwNfywVRdt"
       width="480"
@@ -20,13 +43,15 @@
       ></a>
     </p>
     <div class="thank-you-note">
-      <h1>Merci!</h1>
+      <h1>Haha tu m'aimes trop, je le savais!</h1>
       <p>
-        Chère Mme Patate, je suis très heureux de vous avoir comme ma patate à
-        la Saint-Valentin. Je vous aime beaucoup. Je vous promets de vous aimer
-        et de vous chérir pour toujours. Je vous remercie de m'avoir accepté
-        comme votre patate. Je vous aime beaucoup. Joyeuse Saint-Valentin ma
-        chérie. <3
+        Chère Mme Patate,<br /><br />
+        je suis très heureux de vous avoir comme ma patate à la Saint-Valentin.
+        Je vous aime beaucoup. Je vous promets de vous aimer et de vous chérir
+        pour toujours. Je vous remercie de m'avoir accepté comme votre patate.
+        Je vous aime beaucoup. Joyeuse Saint-Valentin ma chérie. <3<br /><br />
+        Cordialement,<br />
+        Ton Prince Charmant.
       </p>
     </div>
   </body>

@@ -47,8 +47,20 @@
             gif.src = girl;
             gifChanged = false;
           }
+          if (nombreAppuis != 0) {
+            
+            var ouiButton = document.getElementById("oui");
+            var tailleActuelle = window
+              .getComputedStyle(ouiButton, null)
+              .getPropertyValue("font-size");
 
-          document.getElementById("oui").innerText = "slayyyy bitch";
+            var nouvelleTaille = (parseFloat(tailleActuelle) * 1.2);
+            ouiButton.style.fontSize = nouvelleTaille + "px";
+            
+            deplacerAleatoirement(document.getElementById("oui"));
+          }
+          document.getElementById("oui").innerText += "YYYYYY";
+
           titre.innerText =
             "Appuies encore " +
             (5 - nombreAppuis) +
@@ -93,10 +105,10 @@
           element.style.top =   randomY + 'px';
       }
 
-
       function grossirBouton(button) {
         switch (button.id) {
           case "oui":
+            document.getElementById("oui").innerText = "slayyyy bitch\nSLAY";
             okButton();
             break;
           case "underserved":
@@ -113,26 +125,35 @@
 
             break;
           case "non":
-            var ouiButton = document.getElementById("oui");
-
-            var tailleMaximale = window.innerWidth / 15;
-
-            var tailleActuelle = window
-              .getComputedStyle(ouiButton, null)
-              .getPropertyValue("font-size");
-
-            var nouvelleTaille = parseFloat(tailleActuelle) * 1.2;
-
-            if (nouvelleTaille <= tailleMaximale) {
-              ouiButton.style.fontSize = nouvelleTaille + "px";
-            } else {
-              titre.innerText = "Orghhhhhhhhh t'abuses là.............";
-            }
-
+            agrandir(1.2);
             deplacerAleatoirement(button);
             break;
           default:
             alert("T'es trop mignon(ne) !");
+        }
+      }
+
+      function agrandir(index){
+        var ouiButton = document.getElementById("oui");
+
+        ouiButton.classList.add('shake');
+
+        setTimeout(function() {
+          ouiButton.classList.remove('shake');
+        }, 500);
+
+        var tailleMaximale = window.innerWidth / 15;
+
+        var tailleActuelle = window
+          .getComputedStyle(ouiButton, null)
+          .getPropertyValue("font-size");
+
+        var nouvelleTaille = parseFloat(tailleActuelle) * index;
+
+        if (nouvelleTaille <= tailleMaximale) {
+          ouiButton.style.fontSize = nouvelleTaille + "px";
+        } else {
+          titre.innerText = "Orghhhhhhhhh t'abuses là.............";
         }
       }
     </script>

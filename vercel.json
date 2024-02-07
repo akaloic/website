@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/youpi",
+      "dest": "/youpi.html"
+    },
+    {
+      "src": "/",
+      "dest": "/ask.html"
+    }
+  ]
+}
